@@ -55,3 +55,20 @@ app.*.map.json
 /assets/fonts/SF-Old-Republic-SC.zip
 /lib/views/ext/
 /lib/views/ecommerce/
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+/android/
+/.dart_tool/
+/.idea/
+/build/
+/test/
+/pubspec.lock
+/assets/fonts/bentonsans.zip
+/assets/fonts/geometos-soft-family.zip
+/assets/fonts/Iron-Fist.zip
+/assets/fonts/Sen-Regular.zip
+/assets/fonts/SF-Old-Republic-SC.zip
+/lib/views/ext/
+/lib/views/ecommerce/
