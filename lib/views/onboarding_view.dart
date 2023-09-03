@@ -168,10 +168,7 @@ class SubHeading extends StatelessWidget {
       child: Text(
         text,
         textAlign: TextAlign.center,
-        style: const TextStyle(
-            color: lightGray,
-            fontSize: 16,
-            height: 1.8),
+        style: const TextStyle(color: lightGray, fontSize: 16, height: 1.8),
       ),
     );
   }
@@ -220,8 +217,8 @@ class BoardingButton extends StatelessWidget {
         child: MaterialButton(
           onPressed: () {
             currentActiveImage >= 1
-                ? Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignUpView()))
+                ? Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => SignUp()))
                 : pageController.nextPage(
                     duration: const Duration(milliseconds: 150),
                     curve: Curves.ease);

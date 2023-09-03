@@ -72,3 +72,4 @@ app.*.map.json
 /assets/fonts/SF-Old-Republic-SC.zip
 /lib/views/ext/
 /lib/views/ecommerce/
+/lib2/
