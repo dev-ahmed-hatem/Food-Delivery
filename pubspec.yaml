@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  url_launcher: ^6.1.14  
     
   flutter_localizations:
     sdk: flutter
@@ -68,6 +69,8 @@ flutter:
   assets:
     - assets/images/
     - assets/fonts/
+    - assets/icons/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

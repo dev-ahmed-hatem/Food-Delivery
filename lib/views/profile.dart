@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/review.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -147,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 onTap: () {
                   // Navigate to the edit profile screen
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => EditProfilePage(),
+                    builder: (context) => ReviewPage(),
                   ));
                 },
               ),

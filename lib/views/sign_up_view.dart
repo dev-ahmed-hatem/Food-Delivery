@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_project/views/consts.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:iti_project/views/login.dart';
 import 'package:iti_project/views/profile.dart';
 
 class SignUp extends StatefulWidget {
@@ -31,23 +32,25 @@ class _SignUpState extends State<SignUp> {
       home: Scaffold(
         backgroundColor: backgroundColor,
         body: Container(
-          child: Column(children: [
-            Positioned(top: 10, child: _buildTop()),
-            SizedBox(
-              height: 10,
-            ),
-            Text(
-              "SIGN UP FOR FREE",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Positioned(bottom: 0, child: _buildBottom()),
-          ]),
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Positioned(top: 10, child: _buildTop()),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "SIGN UP FOR FREE",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Positioned(bottom: 0, child: _buildBottom()),
+            ]),
+          ),
           decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage("assets/images/background.png"),
@@ -71,85 +74,87 @@ class _SignUpState extends State<SignUp> {
   Widget _buildBottom() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(children: [
-        Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-          child: TextFormField(
-            decoration: InputDecoration(
-              //label: Text("Your name"),
-              hintText: "Enter your name",
-              filled: true,
-              fillColor: Colors.grey[300],
-              icon: Icon(Icons.person),
+      child: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
+            child: TextFormField(
+              decoration: InputDecoration(
+                //label: Text("Your name"),
+                hintText: "Enter your name",
+                filled: true,
+                fillColor: Colors.grey[300],
+                icon: Icon(Icons.person),
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-          child: TextFormField(
-            decoration: InputDecoration(
-              //label: Text("Your name"),
-              hintText: "Email",
-              filled: true,
-              fillColor: Colors.grey[300],
-              icon: Icon(Icons.email),
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
+            child: TextFormField(
+              decoration: InputDecoration(
+                //label: Text("Your name"),
+                hintText: "Email",
+                filled: true,
+                fillColor: Colors.grey[300],
+                icon: Icon(Icons.email),
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 15,
-        ),
-        Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
-          child: TextFormField(
-            obscureText: _obscureText,
-            decoration: InputDecoration(
-              suffixIcon: InkWell(
-                  onTap: () {
-                    _obscureText = !_obscureText;
-                    //setState(() {});
-                  },
-                  child: Icon(_obscureText
-                      ? Icons.remove_red_eye
-                      : CupertinoIcons.eye_slash)),
-              filled: true,
-              fillColor: Colors.grey[300],
-              //label: Text("Your name"),
-              hintText: "password",
+          SizedBox(
+            height: 15,
+          ),
+          Container(
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(25)),
+            child: TextFormField(
+              obscureText: _obscureText,
+              decoration: InputDecoration(
+                suffixIcon: InkWell(
+                    onTap: () {
+                      _obscureText = !_obscureText;
+                      //setState(() {});
+                    },
+                    child: Icon(_obscureText
+                        ? Icons.remove_red_eye
+                        : CupertinoIcons.eye_slash)),
+                filled: true,
+                fillColor: Colors.grey[300],
+                //label: Text("Your name"),
+                hintText: "password",
 
-              icon: Icon(Icons.lock),
+                icon: Icon(Icons.lock),
+              ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Container(
-          width: 180,
-          height: 50,
-          child: ElevatedButton(
-              style: ButtonStyle(
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25.0),
-                          side: BorderSide(color: Colors.grey)))),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => FoodApp()),
-                );
+          SizedBox(
+            height: 30,
+          ),
+          Container(
+            width: 180,
+            height: 50,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(25.0),
+                            side: BorderSide(color: Colors.grey)))),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
 
-                StepState() {}
-              },
-              child: Text(
-                "Create Account",
-                style: TextStyle(color: Colors.white),
-              )),
-        ),
-      ]),
+                  StepState() {}
+                },
+                child: Text(
+                  "Create Account",
+                  style: TextStyle(color: Colors.white),
+                )),
+          ),
+        ]),
+      ),
     );
   }
 
