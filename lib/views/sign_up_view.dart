@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_project/views/consts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:iti_project/views/profile.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -17,9 +19,13 @@ class _SignUpState extends State<SignUp> {
   bool rememberUser = false;
   @override
   Widget build(BuildContext context) {
+    ThemeData(primaryColor: Colors.deepPurple);
     myColor = Theme.of(context).primaryColor;
     mediaSize = MediaQuery.of(context).size;
     return MaterialApp(
+      locale: const Locale("ar"),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(fontFamily: "BentonSnas"),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -31,7 +37,7 @@ class _SignUpState extends State<SignUp> {
               height: 10,
             ),
             Text(
-              "Sign up for free",
+              "SIGN UP FOR FREE",
               style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -57,7 +63,7 @@ class _SignUpState extends State<SignUp> {
         child: Column(mainAxisSize: MainAxisSize.min, children: [
           Padding(
             padding: const EdgeInsets.all(32.0),
-            child: Image.asset("assets/images/Group 1910.png"),
+            child: Image.asset("assets/images/logo.png"),
           )
         ]));
   }
@@ -131,10 +137,10 @@ class _SignUpState extends State<SignUp> {
                           borderRadius: BorderRadius.circular(25.0),
                           side: BorderSide(color: Colors.grey)))),
               onPressed: () {
-                /* Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ),
-                ); */
+                  MaterialPageRoute(builder: (context) => FoodApp()),
+                );
 
                 StepState() {}
               },
