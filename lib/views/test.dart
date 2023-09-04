@@ -1,39 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/consts.dart';
+import 'custom_menu_bar.dart';
 
-class HomeScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Scaffold(
+      backgroundColor: menuBarBackground,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [CustomMenuBar()],
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushAndRemoveUntil(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailsScreen(),
-                ),
-                ModalRoute.withName("/Home"));
-          },
-          child: Text('Go to Details'),
-        ),
-      ),
-    );
-  }
-}
-
-class DetailsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Details'),
-      ),
-      body: Center(
-        child: Text('Details Screen'),
-      ),
-    );
-  }
+    ),
+  ));
 }
