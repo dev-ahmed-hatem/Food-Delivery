@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/cart_view.dart';
+import 'package:iti_project/views/home.dart';
+import 'package:iti_project/views/profile.dart';
+import 'package:iti_project/views/review.dart';
+import 'package:iti_project/views/test.dart';
 import 'consts.dart';
 
 int currentActivePage = 0;
+final List<Widget> pages = [
+  HomePage(),
+  const CartView(),
+  ProfilePage(),
+  const ReviewPage()
+];
 
 class CustomMenuBar extends StatefulWidget {
   const CustomMenuBar({super.key});
@@ -12,6 +23,7 @@ class CustomMenuBar extends StatefulWidget {
 
 class _CustomMenuBarState extends State<CustomMenuBar> {
   List<CustomMenuItem> items = [];
+
   final List<String> images = [
     "assets/icons/Home.png",
     "assets/icons/Icon Cart.png",
@@ -94,6 +106,8 @@ class CustomMenuItem extends StatelessWidget {
         onTap: () {
           currentActivePage = index;
           callback();
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => pages[index]));
         },
         child: Wrap(
           alignment: WrapAlignment.spaceEvenly,
