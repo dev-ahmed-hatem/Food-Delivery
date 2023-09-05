@@ -9,6 +9,9 @@ const backgroundColor = Color(0xff2A2C38);
 const darkColor = Color(0xff222222);
 const themeColor = Color(0xff4023D7);
 
+const notification = Color(0xff4023D7);
+const itemsShadow = Color(0xff22242E);
+
 const menuBarBackground = Color(0xff22242e);
 const menuBarTextColor = Color(0xff6B50F6);
 const menuTextColor = Color(0xff6B50F6);

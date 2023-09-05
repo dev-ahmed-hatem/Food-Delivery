@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/cart_view.dart';
 import 'consts.dart';
+
+List<Widget> pages = [const CartView()];
 
 int currentActivePage = 0;
 
@@ -18,6 +21,7 @@ class _CustomMenuBarState extends State<CustomMenuBar> {
     "assets/icons/Icon Profile.png",
     "assets/icons/Chat.png",
   ];
+
   final List<String> text = ["Home", "Cart", "Profile", "FeedBack"];
 
   void buildMenuItems() {
@@ -94,6 +98,8 @@ class CustomMenuItem extends StatelessWidget {
         onTap: () {
           currentActivePage = index;
           callback();
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => pages[index]));
         },
         child: Wrap(
           alignment: WrapAlignment.spaceEvenly,

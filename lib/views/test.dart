@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iti_project/views/cart_view.dart';
-import 'package:iti_project/views/consts.dart';
 import 'custom_menu_bar.dart';
+import 'home.dart';
 
 void main() {
   runApp(
@@ -18,8 +18,8 @@ void main() {
           child: PageView(
             children: const [
               Stack(children: [
-                CartView(),
-                Positioned(bottom: 0, left: 0, right: 0, child: CustomMenuBar())
+                HomePage(),
+                //Positioned(bottom: 0, left: 0, right: 0, child: CustomMenuBar())
               ])
             ],
           ),

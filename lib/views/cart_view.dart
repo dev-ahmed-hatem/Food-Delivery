@@ -18,17 +18,23 @@ class _CartViewState extends State<CartView> {
             image: DecorationImage(
                 image: AssetImage("assets/images/background.png"),
                 fit: BoxFit.fill)),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CartBar(),
-            SizedBox(height: 36),
-            Text("Recently Added Items",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400)),
-            SizedBox(height: 36),
-            CartItem(),
-            CartItem(),
-            CartItem(),
+            const CartBar(),
+            const SizedBox(height: 36),
+            const Text("Recently Added Items",
+                style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400)),
+            const SizedBox(height: 36),
+            Expanded(
+              child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: 13,
+                  itemBuilder: (context, index) => const CartItem()),
+            )
           ],
         ),
       ),
@@ -75,35 +81,49 @@ class CartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.only(top: 12, bottom: 12, left: 12, right: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(22),
-        color: menuBarBackground,
-      ),
-      child: ListTile(
-        contentPadding: EdgeInsets.zero,
-        leading: const SizedBox(
-          height: 100,
-          width: 100,
-          child: Image(
-              image: AssetImage("assets/images/Menu Photo.png"),
-              fit: BoxFit.fill),
+        margin: const EdgeInsets.only(bottom: 20),
+        padding:
+            const EdgeInsets.only(top: 12, bottom: 12, left: 12, right: 20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(22),
+          color: menuBarBackground,
         ),
-        title: Container(
-          margin: const EdgeInsets.only(bottom: 6),
-          child: const Text(
-            "Herbal Pancake",
-            style: TextStyle(
-                color: textColor, fontWeight: FontWeight.bold, fontSize: 21),
-          ),
-        ),
-        subtitle: const Text("Warung Herbal",
-            style: TextStyle(color: Colors.grey, fontSize: 15)),
-        trailing: const Text("\$7",
-            style: TextStyle(
-                color: themeColor, fontSize: 24, fontWeight: FontWeight.bold)),
-      ),
-    );
+        child: Row(
+          children: [
+            Image.asset(
+              "assets/images/Menu Photo.png",
+              width: 80,
+              height: 80,
+            ),
+            Expanded(
+                child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 6.0, horizontal: 14.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 4),
+                    child: const Text(
+                      "Herbal Pancake",
+                      style: TextStyle(
+                          color: textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 21),
+                    ),
+                  ),
+                  const Text("Warung Herbal",
+                      style: TextStyle(color: Colors.grey, fontSize: 15))
+                ],
+              ),
+            )),
+            const Text("\$7",
+                style: TextStyle(
+                    color: themeColor,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold))
+          ],
+        ));
   }
 }
