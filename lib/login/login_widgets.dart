@@ -1,55 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class LoginWidgets extends StatelessWidget {
   const LoginWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
+   
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        BuildButton(iconImage: Image(
-          height: 20,
-          width: 20,
-          image: AssetImage("assets/images/icon4.jpg")),
-          TextButton: "Facebook",
-          ),
-         BuildButton(iconImage: Image(
-          height: 20,
-          width: 20,
-          image: AssetImage("assets/images/icon2.png")),
-          TextButton: "Google",
-          ),
+      ElevatedButton.icon(
+          onPressed: () async {
+            if (await launchUrlString("https://www.facebook.com/")) {
+              launchUrlString("https://www.facebook.com/");
+            } else {
+              print('Could not launch '); // Add this line for debugging
+              // You can handle the error in your app, e.g., show an error message to the user.
+            }
+          }, icon: Icon(Icons.facebook_rounded,color:Colors.white,), 
+          label: Text("Facebook"),
+          style: ElevatedButton.styleFrom(
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
+            backgroundColor: Color(0XFF2A2C38),
+          ),    
+                  
+      ),
+       ElevatedButton.icon(
+          onPressed: () async {
+            
+             if (await launchUrlString("https://myaccount.google.com/")) {
+              await canLaunchUrlString("https://myaccount.google.com/");
+            } else {
+              print('Could not launch '); // Add this line for debugging
+              // You can handle the error in your app, e.g., show an error message to the user.
+            }
+          },
+           icon: Icon(Icons.g_mobiledata_sharp,color:Colors.white,), 
+          label: Text("Google"),
+          style: ElevatedButton.styleFrom(
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(10.0),
+            ),
+            backgroundColor: Color(0XFF2A2C38),
+          ),    
+                  
+      ),
+      
       ],
     );
-
   }
 }
 
-class BuildButton extends StatelessWidget {
-  final Image iconImage;
-  final String TextButton;
-  BuildButton({required this.iconImage,required this.TextButton });
 
-  @override
-  Widget build(BuildContext context) {
-    var height = MediaQuery.sizeOf(context).height;
-    var width = MediaQuery.sizeOf(context).width;
-    return Container(
-      height: height * .05,
-      width: width *.36,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(12),
-      border: Border.all(color:Color(0xFF2A3857) ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-        iconImage,
-        SizedBox(width: 5,),
-        Text(TextButton,style: TextStyle(
-          color:Color(0xFFE8E5F8),fontSize: 16, 
-          fontWeight: FontWeight.bold),),
-      ],),
-    );
-  }
-}
