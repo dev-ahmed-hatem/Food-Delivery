@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/login.dart';
 import 'package:iti_project/views/review.dart';
 
 class Profile extends StatefulWidget {
@@ -130,13 +131,13 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               ListTile(
                 title: Text(
-                  'Restaurant XYZ - Excellent food!',
+                  'Restaurant X - Excellent food!',
                   style: TextStyle(color: Colors.blueAccent),
                 ),
               ),
               ListTile(
                 title: Text(
-                  'Restaurant ABC - Great service!',
+                  'Restaurant Y - Great service!',
                   style: TextStyle(color: Colors.blueAccent),
                 ),
               ),
@@ -146,7 +147,6 @@ class _ProfilePageState extends State<ProfilePage> {
                 leading: Icon(Icons.edit),
                 title: Text('Edit Profile'),
                 onTap: () {
-                  // Navigate to the edit profile screen
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => ReviewPage(),
                   ));
@@ -158,7 +158,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 leading: Icon(Icons.exit_to_app),
                 title: Text('Logout'),
                 onTap: () {
-                  // Perform logout action
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Loginpage(),
+                  ));
                 },
               ),
             ],

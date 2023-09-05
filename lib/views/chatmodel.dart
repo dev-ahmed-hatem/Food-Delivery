@@ -12,49 +12,26 @@ class ChatModel {
   });
 }
 
-List<Map<String, dynamic>> menu = [
-  {
-    "image": "assets/Device_images/herbal.png",
-    "title": "Herbal Pancake",
-    "descrption": "Warung Herbal",
-    "price": "\$7",
-  },
-  {
-    "image": "assets/Device_images/salad.png",
-    "title": "Fruit Salade",
-    "descrption": "Fruit Salad",
-    "price": "\$5",
-  },
-  {
-    "image": "assets/Device_images/green_noodle.png",
-    "title": "Green Noodle",
-    "descrption": "Green Noodle",
-    "price": "\$15",
-  }
-];
+class ResModel {
+  String? image;
+  String? title;
+  String? description;
+  String? price;
 
-List<Map<String, dynamic>> restaurant = [
-  {
-    "image": "assets/Device_images/vegan.png",
-    "title": "Vegan Resto",
-    "Time": "12 Min",
-  },
-  {
-    "image": "assets/Device_images/healthy.png",
-    "title": "Healthy Food",
-    "Time": "8 Min",
-  },
-  {
-    "image": "assets/Device_images/good_food.png",
-    "title": "Good Food",
-    "Time": "12 Min",
-  },
-  {
-    "image": "assets/Device_images/resto.png",
-    "title": "Smart Resto",
-    "Time": "8 Min",
-  },
-];
+  ResModel({
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.price,
+  });
+
+  ResModel.fromJson(Map json) {
+    image = json["image"];
+    title = json["title"];
+    description = json["description"];
+    price = json["price"];
+  }
+}
 
 class MenuModel {
   String? image;
@@ -77,20 +54,61 @@ class MenuModel {
   }
 }
 
-class ResModel {
-  String? image;
-  String? title;
-  String? Time;
+List<Map<String, dynamic>> restaurant = [
+  {
+    "image": "assets/images/1.jpeg",
+    "title": "Bacon",
+    "price": "\$6",
+  },
+  {
+    "image": "assets/images/2.jpeg",
+    "title": "Burger",
+    "price": "\$16",
+  },
+  {
+    "image": "assets/images/8.jpeg",
+    "title": "Hot Dog",
+    "price": "\$15",
+  },
+  {
+    "image": "assets/images/3.jpeg",
+    "title": "Cheddar",
+    "price": "\$12",
+  },
+  {
+    "image": "assets/images/4.jpeg",
+    "title": "American Coffee",
+    "price": "\$8",
+  },
+  {
+    "image": "assets/images/5.jpeg",
+    "title": "Fries",
+    "price": "\$10",
+  },
+  {
+    "image": "assets/images/10.jpeg",
+    "title": "Ice Cream",
+    "price": "\$5",
+  },
+];
 
-  ResModel({
-    required this.image,
-    required this.title,
-    required this.Time,
-  });
-
-  ResModel.fromJson(Map json) {
-    image = json["image"];
-    title = json["title"];
-    Time = json["Time"];
+List<Map<String, dynamic>> menu = [
+  {
+    "image": "assets/images/7.jpeg",
+    "title": "Herbal Pancake",
+    "description": "Warung Herbal",
+    "price": "\$7",
+  },
+  {
+    "image": "assets/images/11.jpeg",
+    "title": "Fruit Salade",
+    "description": "Fruit Salad",
+    "price": "\$5",
+  },
+  {
+    "image": "assets/images/6.jpeg",
+    "title": "Green Noodle",
+    "description": "Green Noodle",
+    "price": "\$15",
   }
-}
+];

@@ -15,3 +15,5 @@ const itemsShadow = Color(0xff22242E);
 const menuBarBackground = Color(0xff22242e);
 const menuBarTextColor = Color(0xff6B50F6);
 const menuTextColor = Color(0xff6B50F6);
+
+const viewMore = Color(0xff6B50F6);
