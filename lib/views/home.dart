@@ -125,15 +125,20 @@ class HomePage extends StatelessWidget {
                                 items: images.map((item) {
                                   return ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
-                                      child: Image.network(
-                                        item.image!,
+                                      child: Image.asset(
+                                        "assets/images/Promo.Png",
                                         fit: BoxFit.fill,
                                       ));
                                 }).toList(),
                               ),
                             );
                           } else {
-                            return SizedBox.shrink();
+                            return ClipRRect(
+                                borderRadius: BorderRadius.circular(20),
+                                child: Image.asset(
+                                  "assets/images/Promo.png",
+                                  fit: BoxFit.fill,
+                                ));
                           }
                         },
                       ),
