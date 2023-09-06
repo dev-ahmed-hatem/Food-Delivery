@@ -22,7 +22,7 @@ void main() async {
       home: MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => CartCubit()),
-            BlocProvider(create: (context) => HomeCubit())
+            BlocProvider(create: (context) => HomeCubit()..getBanners())
           ],
           child: const MainFrame()),
     ),

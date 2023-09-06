@@ -87,62 +87,62 @@ class HomePage extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.vertical,
                 children: [
-                      // Promo
-                      BlocBuilder<HomeCubit, HomeState>(
-                        builder: (context, state) {
-                          if (state is HomeBannerLoading) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else if (state is HomeBannerSuccess) {
-                            List<BannerData>? rawImages =
-                                context.read<HomeCubit>().bannerModel.data;
-                            List<BannerData>? images = [
-                              rawImages![6],
-                              rawImages[7],
-                              rawImages[8]
-                            ];
-                            return SizedBox(
-                              width: 342,
-                              height: 150,
-                              child: CarouselSlider(
-                                options: CarouselOptions(
-                                  height: 400,
-                                  aspectRatio: 16 / 9,
-                                  viewportFraction: 0.95,
-                                  initialPage: 0,
-                                  enableInfiniteScroll: true,
-                                  reverse: false,
-                                  autoPlay: true,
-                                  autoPlayInterval: Duration(seconds: 3),
-                                  autoPlayAnimationDuration:
+                  // Promo
+                  BlocBuilder<HomeCubit, HomeState>(
+                    builder: (context, state) {
+                      if (state is HomeBannerLoading) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (state is HomeBannerSuccess) {
+                        List<BannerData>? rawImages =
+                            context.read<HomeCubit>().bannerModel.data;
+                        List<BannerData>? images = [
+                          rawImages![6],
+                          rawImages[7],
+                          rawImages[8]
+                        ];
+                        return SizedBox(
+                          width: 342,
+                          height: 150,
+                          child: CarouselSlider(
+                            options: CarouselOptions(
+                              height: 400,
+                              aspectRatio: 16 / 9,
+                              viewportFraction: 0.95,
+                              initialPage: 0,
+                              enableInfiniteScroll: true,
+                              reverse: false,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 3),
+                              autoPlayAnimationDuration:
                                   Duration(milliseconds: 800),
-                                  autoPlayCurve: Curves.fastOutSlowIn,
-                                  enlargeCenterPage: true,
-                                  enlargeFactor: 0.3,
-                                  scrollDirection: Axis.horizontal,
-                                ),
-                                items: images.map((item) {
-                                  return ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        "assets/images/Promo.Png",
-                                        fit: BoxFit.fill,
-                                      ));
-                                }).toList(),
-                              ),
-                            );
-                          } else {
-                            return ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Image.asset(
-                                  "assets/images/Promo.png",
-                                  fit: BoxFit.fill,
-                                ));
-                          }
-                        },
-                      ),
-                      /*Container(
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              enlargeFactor: 0.3,
+                              scrollDirection: Axis.horizontal,
+                            ),
+                            items: images.map((item) {
+                              return ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Image.network(
+                                    item.image!,
+                                    fit: BoxFit.fill,
+                                  ));
+                            }).toList(),
+                          ),
+                        );
+                      } else {
+                        return ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              "assets/images/Promo.png",
+                              fit: BoxFit.fill,
+                            ));
+                      }
+                    },
+                  ),
+                  /*Container(
                         width: 342,
                         height: 150,
                         decoration: const BoxDecoration(
@@ -151,7 +151,7 @@ class HomePage extends StatelessWidget {
                           fit: BoxFit.fill,
                         )),
                       ),*/
-                      const SizedBox(
+                  const SizedBox(
                         height: 20,
                       ),
 
@@ -228,27 +228,9 @@ class HomePage extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-
-                      /*Container(
-                    padding: const EdgeInsets.only(right: 20),
-                    height: 150,
-                    child: ListView.separated(
-                      physics: const BouncingScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      itemCount: MenuList.length,
-                      separatorBuilder: (context, index) => const SizedBox(
-                        height: 20,
-                      ),
-                      itemBuilder: (context, index) => _MenuItemBuilder(
-                        price: MenuList[index].price ?? "",
-                        description: MenuList[index].description ?? "",
-                        image: MenuList[index].image ?? "",
-                        title: MenuList[index].title ?? "",
-                      ),
-                    ),
-                  )*/
-                    ] +
-                    _buildPopularMenu(),
+                ] +
+                    _buildPopularMenu()
+                ,
               ),
             )
           ]),
