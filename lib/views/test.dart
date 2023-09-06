@@ -1,30 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:iti_project/views/cart_view.dart';
-import 'custom_menu_bar.dart';
-import 'home.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:iti_project/cubit/cart_cubit.dart';
+import 'package:iti_project/models/product_model.dart';
+import 'package:iti_project/views/home/cubit/home_cubit.dart';
+import 'package:iti_project/views/main_frame.dart';
 
-void main() {
+import '../dio/dio_helper.dart';
+
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox("CART_BOX");
+  Hive.registerAdapter(ProductModelAdapter());
+
+  DioHelper.init();
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "BentonSnas", brightness: Brightness.dark),
-      home: Scaffold(
-        //backgroundColor: menuBarBackground,
-        body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/background.png"),
-                  fit: BoxFit.fill)),
-          child: PageView(
-            children: const [
-              Stack(children: [
-                HomePage(),
-                //Positioned(bottom: 0, left: 0, right: 0, child: CustomMenuBar())
-              ])
-            ],
-          ),
-        ),
-      ),
+      home: MultiBlocProvider(
+          providers: [
+            BlocProvider(create: (context) => CartCubit()),
+            BlocProvider(create: (context) => HomeCubit())
+          ],
+          child: const MainFrame()),
     ),
   );
 }

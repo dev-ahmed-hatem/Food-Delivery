@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:iti_project/views/cart_view.dart';
 import 'consts.dart';
-
-List<Widget> pages = [const CartView()];
-
-int currentActivePage = 0;
+import 'main_frame.dart';
 
 class CustomMenuBar extends StatefulWidget {
-  const CustomMenuBar({super.key});
+  final PageController mainFrame;
+
+  const CustomMenuBar(
+      {required this.mainFrame, super.key});
 
   @override
   State<CustomMenuBar> createState() => _CustomMenuBarState();
@@ -33,6 +32,7 @@ class _CustomMenuBarState extends State<CustomMenuBar> {
         isActive: currentActivePage == i ? true : false,
         index: i,
         callback: updateMenuBar,
+        mainFrame: widget.mainFrame,
       ));
     }
   }
@@ -72,6 +72,7 @@ class CustomMenuItem extends StatelessWidget {
       required this.isActive,
       required this.index,
       required this.callback,
+      required this.mainFrame,
       super.key});
 
   final String image;
@@ -79,6 +80,7 @@ class CustomMenuItem extends StatelessWidget {
   final bool isActive;
   final int index;
   final VoidCallback callback;
+  final PageController mainFrame;
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +100,11 @@ class CustomMenuItem extends StatelessWidget {
         onTap: () {
           currentActivePage = index;
           callback();
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => pages[index]));
+          mainFrame.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 250),
+            curve: Curves.ease,
+          );
         },
         child: Wrap(
           alignment: WrapAlignment.spaceEvenly,

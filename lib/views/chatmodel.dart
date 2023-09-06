@@ -14,21 +14,21 @@ class ChatModel {
 
 List<Map<String, dynamic>> menu = [
   {
-    "image": "assets/Device_images/herbal.png",
+    "image": "assets/images/Menu Photo.png",
     "title": "Herbal Pancake",
-    "descrption": "Warung Herbal",
+    "desc": "Warung Herbal",
     "price": "\$7",
   },
   {
     "image": "assets/Device_images/salad.png",
     "title": "Fruit Salade",
-    "descrption": "Fruit Salad",
+    "desc": "Fruit Salad",
     "price": "\$5",
   },
   {
     "image": "assets/Device_images/green_noodle.png",
     "title": "Green Noodle",
-    "descrption": "Green Noodle",
+    "desc": "Green Noodle",
     "price": "\$15",
   }
 ];
@@ -57,22 +57,22 @@ List<Map<String, dynamic>> restaurant = [
 ];
 
 class MenuModel {
-  String? image;
-  String? title;
-  String? description;
-  String? price;
+  late String image;
+  late String title;
+  late String desc;
+  late String price;
 
   MenuModel({
     required this.image,
     required this.title,
-    required this.description,
+    required this.desc,
     required this.price,
   });
 
   MenuModel.fromJson(Map json) {
     image = json["image"];
     title = json["title"];
-    description = json["description"];
+    desc = json["desc"];
     price = json["price"];
   }
 }
