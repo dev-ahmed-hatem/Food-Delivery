@@ -12,16 +12,14 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-          body: Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage("assets/images/background.png"),
-                fit: BoxFit.cover)),
-      )),
-    );
+    return Scaffold(
+        body: Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/images/background.png"),
+              fit: BoxFit.cover)),
+      child: ProfilePage(),
+    ));
   }
 }
 
@@ -43,6 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
   String username = "Ahmed Nabil";
   String email = 'AhmedNabil@outlook.com';
   String favoriteCuisine = 'Italian';
+
   //List<String> allergies = ['None'];
   int totalOrders = 15;
   String lastOrder = 'Spaghetti Carbonara';

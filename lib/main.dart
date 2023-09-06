@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iti_project/views/onboarding_view.dart';
+import 'dio/dio_helper.dart';
+import 'models/product_model.dart';
 import 'views/splash_view.dart';
 import 'views/test.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  await Hive.openBox("CART_BOX");
+  Hive.registerAdapter(ProductModelAdapter());
+
+  DioHelper.init();
   runApp(MaterialApp(
     title: "Food Delivery",
     theme: ThemeData(fontFamily: "BentonSnas"),

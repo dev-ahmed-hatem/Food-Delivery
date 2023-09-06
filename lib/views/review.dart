@@ -60,20 +60,19 @@ class _ReviewPageState extends State<ReviewPage> {
     required String image,
   }) {
     return Container(
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: Color.fromRGBO(34, 36, 46, 1),
       ),
-      width: 180,
-      height: 90,
       child: Column(
         children: [
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               CircleAvatar(
                 radius: 25,
-                backgroundImage: NetworkImage(
+                backgroundImage: AssetImage(
                   image,
                 ),
               ),
@@ -91,7 +90,7 @@ class _ReviewPageState extends State<ReviewPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 15,
+                    height: 5,
                   ),
                   Text(
                     message,
@@ -128,7 +127,7 @@ class _ReviewPageState extends State<ReviewPage> {
             ],
           ),
           const SizedBox(
-            height: 20,
+            height: 5,
           ),
         ],
       ),

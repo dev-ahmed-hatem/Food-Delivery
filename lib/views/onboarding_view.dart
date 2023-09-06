@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/login.dart';
 import 'consts.dart';
 import 'sign_up_view.dart';
 
@@ -221,7 +222,7 @@ class BoardingButton extends StatelessWidget {
           onPressed: () {
             currentActiveImage >= 1
                 ? Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SignUpView()))
+                    MaterialPageRoute(builder: (context) => SignUp()))
                 : pageController.nextPage(
                     duration: const Duration(milliseconds: 150),
                     curve: Curves.ease);
