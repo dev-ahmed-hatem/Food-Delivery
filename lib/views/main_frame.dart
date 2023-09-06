@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iti_project/views/profile.dart';
+import 'package:iti_project/views/review.dart';
 
 import 'cart_view.dart';
 import 'custom_menu_bar.dart';
@@ -9,8 +11,8 @@ int currentActivePage = 0;
 List<Widget> pages = [
   const HomePage(),
   const CartView(),
-  const Scaffold(),
-  const Scaffold()
+  const Profile(),
+  const ReviewPage()
 ];
 
 class MainFrame extends StatefulWidget {
