@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'consts.dart';
-
-int currentActivePage = 0;
+import 'main_frame.dart';
 
 class CustomMenuBar extends StatefulWidget {
-  const CustomMenuBar({super.key});
+  final PageController mainFrame;
+
+  const CustomMenuBar(
+      {required this.mainFrame, super.key});
 
   @override
   State<CustomMenuBar> createState() => _CustomMenuBarState();
@@ -16,18 +18,21 @@ class _CustomMenuBarState extends State<CustomMenuBar> {
     "assets/icons/Home.png",
     "assets/icons/Icon Cart.png",
     "assets/icons/Icon Profile.png",
+    "assets/icons/Chat.png",
   ];
-  final List<String> text = ["Home", "Cart", "Profile"];
 
-  void buildMenuItems(){
+  final List<String> text = ["Home", "Cart", "Profile", "FeedBack"];
+
+  void buildMenuItems() {
     items.clear();
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 4; i++) {
       items.add(CustomMenuItem(
         image: images[i],
         text: text[i],
         isActive: currentActivePage == i ? true : false,
         index: i,
         callback: updateMenuBar,
+        mainFrame: widget.mainFrame,
       ));
     }
   }
@@ -67,6 +72,7 @@ class CustomMenuItem extends StatelessWidget {
       required this.isActive,
       required this.index,
       required this.callback,
+      required this.mainFrame,
       super.key});
 
   final String image;
@@ -74,11 +80,16 @@ class CustomMenuItem extends StatelessWidget {
   final bool isActive;
   final int index;
   final VoidCallback callback;
+  final PageController mainFrame;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      width: isActive ? 160 : 60,
+      width: isActive
+          ? index == 3
+              ? 160
+              : 135
+          : 60,
       height: 60,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -89,6 +100,11 @@ class CustomMenuItem extends StatelessWidget {
         onTap: () {
           currentActivePage = index;
           callback();
+          mainFrame.animateToPage(
+            index,
+            duration: const Duration(milliseconds: 250),
+            curve: Curves.ease,
+          );
         },
         child: Wrap(
           alignment: WrapAlignment.spaceEvenly,
@@ -104,8 +120,8 @@ class CustomMenuItem extends StatelessWidget {
               Visibility(
                   visible: true,
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 150),
-                    margin: const EdgeInsets.only(left: 20, top: 5),
+                    duration: const Duration(milliseconds: 350),
+                    margin: const EdgeInsets.only(left: 10, top: 5),
                     child: Text(
                       text,
                       overflow: TextOverflow.clip,
