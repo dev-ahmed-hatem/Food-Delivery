@@ -1,4 +1,3 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -102,35 +101,36 @@ class HomePage extends StatelessWidget {
                           rawImages[7],
                           rawImages[8]
                         ];
-                        return SizedBox(
+                        return const SizedBox(
                           width: 342,
                           height: 150,
-                          child: CarouselSlider(
-                            options: CarouselOptions(
-                              height: 400,
-                              aspectRatio: 16 / 9,
-                              viewportFraction: 0.95,
-                              initialPage: 0,
-                              enableInfiniteScroll: true,
-                              reverse: false,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 3),
-                              autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enlargeCenterPage: true,
-                              enlargeFactor: 0.3,
-                              scrollDirection: Axis.horizontal,
-                            ),
-                            items: images.map((item) {
-                              return ClipRRect(
-                                  borderRadius: BorderRadius.circular(20),
-                                  child: Image.network(
-                                    item.image!,
-                                    fit: BoxFit.fill,
-                                  ));
-                            }).toList(),
-                          ),
+                          child: Center(child: Text("data"),)
+                          // CarouselSlider(
+                          //   options: CarouselOptions(
+                          //     height: 400,
+                          //     aspectRatio: 16 / 9,
+                          //     viewportFraction: 0.95,
+                          //     initialPage: 0,
+                          //     enableInfiniteScroll: true,
+                          //     reverse: false,
+                          //     autoPlay: true,
+                          //     autoPlayInterval: Duration(seconds: 3),
+                          //     autoPlayAnimationDuration:
+                          //         Duration(milliseconds: 800),
+                          //     autoPlayCurve: Curves.fastOutSlowIn,
+                          //     enlargeCenterPage: true,
+                          //     enlargeFactor: 0.3,
+                          //     scrollDirection: Axis.horizontal,
+                          //   ),
+                          //   items: images.map((item) {
+                          //     return ClipRRect(
+                          //         borderRadius: BorderRadius.circular(20),
+                          //         child: Image.network(
+                          //           item.image!,
+                          //           fit: BoxFit.fill,
+                          //         ));
+                          //   }).toList(),
+                          // ),
                         );
                       } else {
                         return ClipRRect(
